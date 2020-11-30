@@ -1,3 +1,4 @@
+#include "peakpch.h"
 #include "Log.h"
 
 namespace Peak
