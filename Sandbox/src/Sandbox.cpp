@@ -25,7 +25,9 @@ class Sandbox : public Peak::Application
 public:
 	Sandbox()
 	{
+		Create_Window("Peak Engine", 1280, 720);
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Peak::ImGuiLayer());
 	}
 	~Sandbox()
 	{

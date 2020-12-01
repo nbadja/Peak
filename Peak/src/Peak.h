@@ -7,6 +7,7 @@
 #include "Peak/Application.h"
 #include "Peak/Layer.h"
 #include "Peak/Log.h"
+#include "Peak/ImGui/ImGuiLayer.h"
 
 // Entry Point
 

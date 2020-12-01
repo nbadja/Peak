@@ -1,6 +1,8 @@
 #include "peakpch.h"
 #include "Window.h"
-
+#include "Peak/Log.h"
+#include "Peak/ImGui/ImGuiLayer.h"
+#include "Peak/Application.h"
 
 namespace Peak
 {
@@ -11,8 +13,13 @@ namespace Peak
 		window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 			width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
 		gl_context = SDL_GL_CreateContext(window);
+		SDL_GL_MakeCurrent(window, gl_context);
+		gladLoadGLLoader(SDL_GL_GetProcAddress);
+		PEAK_CORE_INFO("Vendor:  {0}", glGetString(GL_VENDOR));
+		PEAK_CORE_INFO("Renderer:{0}", glGetString(GL_RENDERER));
+		PEAK_CORE_INFO("Version: {0}", glGetString(GL_VERSION));
 		SDL_GL_SetSwapInterval(1); // Enable vsync
-	//	gl3wInit();
+		
 	}
 
 	Window::~Window()
@@ -25,22 +32,21 @@ namespace Peak
 		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0) {
 			printf("Error: %s\n", SDL_GetError());
 		}
+		SDL_GL_LoadLibrary(NULL);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 		SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 		SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
-		SDL_DisplayMode current;
-		SDL_GetCurrentDisplayMode(0, &current);
+		SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 	}
 
 	void Peak::Render()
 	{
-		//Render background
-		/*glClearColor(0.f, 0.f, 0.f, 1.f);
-		glClear(GL_COLOR_BUFFER_BIT);*/
+		glClearColor(0.24f, 0.24f, 0.24f, 0.24f);
+		glClear(GL_COLOR_BUFFER_BIT);
 	}
 
 	void Window::Destroy()
@@ -50,8 +56,22 @@ namespace Peak
 		SDL_Quit();
 	}
 
-	void Peak::SwapWindow(SDL_Window* window)
+	void Peak::Update(SDL_Window* window)
 	{
 		SDL_GL_SwapWindow(window);
+	}
+
+	int Window::GetWidth()
+	{
+		int width, height;
+		SDL_GetWindowSize(window, &width, &height);
+		return width;
+	}
+
+	int Window::GetHeight()
+	{
+		int width,height;
+		SDL_GetWindowSize(window, &width, &height);
+		return height;
 	}
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include "Peak/Core.h"
-#include "GL/gl3w.h"
+#include "glad/glad.h"
 #include "SDL.h"
 
 namespace Peak
@@ -13,7 +13,9 @@ namespace Peak
 		void Init();
 		friend void Render();
 		void Destroy();
-		friend void SwapWindow(SDL_Window* window);
+		friend void Update(SDL_Window* window);
+		int GetWidth();
+		int GetHeight();
 		SDL_Window* window;
 		SDL_GLContext gl_context;
 	};

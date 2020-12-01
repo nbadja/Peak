@@ -12,15 +12,21 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["SDL2"] = "Peak/vendor/SDL2/include"
+IncludeDir["Glad"] = "Peak/vendor/Glad/include"
+IncludeDir["ImGui"] = "Peak/vendor/imgui"
 
-
+group "Dependencies"
 include "Peak/vendor/SDL2/SDL2.lua"
 include "Peak/vendor/SDL2/SDL2main.lua"
+include "Peak/vendor/Glad"
+include "Peak/vendor/imgui"
+group ""
 
 project "Peak"
 	location "Peak"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -39,19 +45,22 @@ project "Peak"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
 		"%{IncludeDir.SDL2}",
-		"GL"
+		"GL",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"SDL2",
 		"SDL2main",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -67,23 +76,24 @@ project "Peak"
 
 	filter "configurations:Debug"
 		defines "PEAK_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PEAK_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PEAK_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -99,18 +109,19 @@ project "Sandbox"
 		"Peak/vendor/spdlog/include",
 		"Peak/src",
 		"%{IncludeDir.SDL2}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"Peak",
 		"SDL2",
-		"SDL2main"
+		"SDL2main",
+		"Glad"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -120,15 +131,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "PEAK_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PEAK_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PEAK_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"

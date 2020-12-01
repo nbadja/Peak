@@ -7,3 +7,6 @@
 [submodule "Peak/vendor/SDL2"]
 	path = Peak/vendor/SDL2
 	url = https://github.com/SpookyScaryDev/SDL2
+[submodule "Peak/vendor/imgui"]
+	path = Peak/vendor/imgui
+	url = https://github.com/TheCherno/imgui
