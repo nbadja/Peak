@@ -4,3 +4,6 @@
 [submodule "Peak/vendor/GLFW"]
 	path = Peak/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "Peak/vendor/SDL2"]
+	path = Peak/vendor/SDL2
+	url = https://github.com/SpookyScaryDev/SDL2
