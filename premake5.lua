@@ -11,7 +11,11 @@ workspace "Peak"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
+IncludeDir["SDL2"] = "Peak/vendor/SDL2/include"
 
+
+include "Peak/vendor/SDL2/SDL2.lua"
+include "Peak/vendor/SDL2/SDL2main.lua"
 
 project "Peak"
 	location "Peak"
@@ -33,11 +37,15 @@ project "Peak"
 	includedirs
 	{
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.SDL2}",
+		"GL"
 	}
 
 	links
 	{
+		"SDL2",
+		"SDL2main",
 		"opengl32.lib"
 	}
 
@@ -59,14 +67,17 @@ project "Peak"
 
 	filter "configurations:Debug"
 		defines "PEAK_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PEAK_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PEAK_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -86,12 +97,15 @@ project "Sandbox"
 	includedirs
 	{
 		"Peak/vendor/spdlog/include",
-		"Peak/src"
+		"Peak/src",
+		"%{IncludeDir.SDL2}",
 	}
 
 	links
 	{
-		"Peak"
+		"Peak",
+		"SDL2",
+		"SDL2main"
 	}
 
 	filter "system:windows"
@@ -106,12 +120,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "PEAK_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PEAK_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PEAK_DIST"
+		buildoptions "/MD"
 		optimize "On"

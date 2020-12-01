@@ -12,6 +12,8 @@ int main(int args, char** argv)
 	auto app = Peak::CreateApplication();
 	app->Run();
 	delete app;
+
+	return 0;
 }
 
 #endif

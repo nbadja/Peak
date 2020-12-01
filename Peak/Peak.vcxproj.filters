@@ -4,11 +4,8 @@
     <Filter Include="Peak">
       <UniqueIdentifier>{66A88A7C-52DF-8B0D-FBCB-7110E7E1070F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Peak\Core">
-      <UniqueIdentifier>{7EFCDAB6-EA66-8F2D-33A5-40D39F4E6D82}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Peak\Events">
-      <UniqueIdentifier>{8A25AEDE-F6DA-26D4-7FCF-20ABEB831DD8}</UniqueIdentifier>
+    <Filter Include="Peak\Window">
+      <UniqueIdentifier>{8D86C407-F93B-3DFD-8230-37D4EEE43301}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -22,8 +19,17 @@
     <ClInclude Include="src\Peak\EntryPoint.h">
       <Filter>Peak</Filter>
     </ClInclude>
+    <ClInclude Include="src\Peak\Layer.h">
+      <Filter>Peak</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Peak\LayerStack.h">
+      <Filter>Peak</Filter>
+    </ClInclude>
     <ClInclude Include="src\Peak\Log.h">
       <Filter>Peak</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Peak\Window\Window.h">
+      <Filter>Peak\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\peakpch.h" />
   </ItemGroup>
@@ -31,8 +37,17 @@
     <ClCompile Include="src\Peak\Application.cpp">
       <Filter>Peak</Filter>
     </ClCompile>
+    <ClCompile Include="src\Peak\Layer.cpp">
+      <Filter>Peak</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Peak\LayerStack.cpp">
+      <Filter>Peak</Filter>
+    </ClCompile>
     <ClCompile Include="src\Peak\Log.cpp">
       <Filter>Peak</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Peak\Window\Window.cpp">
+      <Filter>Peak\Window</Filter>
     </ClCompile>
     <ClCompile Include="src\peakpch.cpp" />
   </ItemGroup>
