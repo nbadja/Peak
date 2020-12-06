@@ -50,6 +50,15 @@
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\peakpch.h" />
+    <ClInclude Include="src\Peak\Renderer\Shader.h" />
+    <ClInclude Include="src\Peak\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Peak\Renderer\Renderer.h" />
+    <ClInclude Include="src\Peak\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Peak\Renderer\Camera.h" />
+    <ClInclude Include="src\Peak\Input.h" />
+    <ClInclude Include="src\Peak\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Peak\Application.cpp">
@@ -77,5 +86,12 @@
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\peakpch.cpp" />
+    <ClCompile Include="src\Peak\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Peak\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Peak\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Peak\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Peak\Renderer\Camera.cpp" />
   </ItemGroup>
 </Project>

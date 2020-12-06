@@ -8,7 +8,7 @@
 
 namespace Peak {
 	
-	class PEAK_API Log
+	class  Log
 	{
 	public:
 		static void Init();

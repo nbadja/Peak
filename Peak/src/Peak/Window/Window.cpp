@@ -3,6 +3,7 @@
 #include "Peak/Log.h"
 #include "Peak/ImGui/ImGuiLayer.h"
 #include "Peak/Application.h"
+#include <imgui.h>
 
 namespace Peak
 {
@@ -40,13 +41,12 @@ namespace Peak
 		SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 		SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
 	}
 
 	void Peak::Render()
 	{
-		glClearColor(0.24f, 0.24f, 0.24f, 0.24f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		
 	}
 
 	void Window::Destroy()
@@ -59,6 +59,11 @@ namespace Peak
 	void Peak::Update(SDL_Window* window)
 	{
 		SDL_GL_SwapWindow(window);
+	}
+
+	void Window::OnWindowResize()
+	{
+		glViewport(0, 0, GetWidth(), GetHeight());
 	}
 
 	int Window::GetWidth()

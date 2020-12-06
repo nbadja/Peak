@@ -1,6 +1,6 @@
 workspace "Peak"
 	architecture "x64"
-
+	startproject "Sandbox"
 	configurations
 	{
 		"Debug",
@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["SDL2"] = "Peak/vendor/SDL2/include"
 IncludeDir["Glad"] = "Peak/vendor/Glad/include"
 IncludeDir["ImGui"] = "Peak/vendor/imgui"
+IncludeDir["glm"] = "Peak/vendor/glm"
 
 group "Dependencies"
 include "Peak/vendor/SDL2/SDL2.lua"
@@ -24,9 +25,10 @@ group ""
 
 project "Peak"
 	location "Peak"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -47,7 +49,8 @@ project "Peak"
 		"%{IncludeDir.SDL2}",
 		"GL",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -60,7 +63,6 @@ project "Peak"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -69,31 +71,27 @@ project "Peak"
 				"PEAK_BUILD_DLL"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
-
 	filter "configurations:Debug"
 		defines "PEAK_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "PEAK_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "PEAK_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -101,7 +99,7 @@ project "Sandbox"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
 	}
 
 	includedirs
@@ -109,7 +107,10 @@ project "Sandbox"
 		"Peak/vendor/spdlog/include",
 		"Peak/src",
 		"%{IncludeDir.SDL2}",
-		"%{IncludeDir.Glad}"
+		"GL",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -117,11 +118,9 @@ project "Sandbox"
 		"Peak",
 		"SDL2",
 		"SDL2main",
-		"Glad"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -132,14 +131,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "PEAK_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "PEAK_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "PEAK_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"

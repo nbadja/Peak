@@ -12,4 +12,10 @@ namespace Peak
 	{
 
 	}
+
+	void Layer::RegisterEvent(SDL_Event& event)
+	{
+		m_Event = event;
+		Input = SDL_GetKeyboardState(NULL);
+	}
 }

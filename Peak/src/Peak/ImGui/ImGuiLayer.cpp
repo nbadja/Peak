@@ -1,7 +1,6 @@
 #include "peakpch.h"
 #include "ImGuiLayer.h"
-#include "Peak/Log.h"
-#include "Platform/OpenGL/imgui_impl_sdl.h"
+#include "Platform/OpenGL/imgui_impl_SDL.h"
 #include "Platform/OpenGL/imgui_impl_opengl3.h"
 #include "Peak/Application.h"
 
@@ -26,6 +25,7 @@ namespace Peak
 		ImGuiIO& io = ImGui::GetIO(); (void)io;
 		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
+		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
 		io.KeyMap[ImGuiKey_Tab] = SDL_SCANCODE_TAB;
 		io.KeyMap[ImGuiKey_LeftArrow] = SDL_SCANCODE_LEFT;
@@ -72,35 +72,38 @@ namespace Peak
 		ImGui::DestroyContext();
 	}
 
-	void ImGuiLayer::OnUpdate()
+	void ImGuiLayer::Begin()
+	{
+		Application& app = Application::Get();
+		Window* window = static_cast<Window*>(app.GetWindow());
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplSDL2_NewFrame(window->window);
+		ImGui::NewFrame();
+	}
+
+	void ImGuiLayer::OnImGuiRender()
+	{
+
+	}
+
+	void ImGuiLayer::End()
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		Window* window = static_cast<Window*>(app.GetWindow());
 		io.DisplaySize = ImVec2(window->GetWidth(), window->GetHeight());
 
-		float time = (float)SDL_GetTicks();
-		io.DeltaTime = m_Time > 0.0f ? (time - m_Time) : (1.0f / 60.0f);
-		m_Time = time;
-
-
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplSDL2_NewFrame(window->window);
-		ImGui::NewFrame();
-
-		bool show = true;
-
-		if(show)
-			ImGui::ShowDemoWindow(&show);
-
-
-		glViewport(0, 0, (int)ImGui::GetIO().DisplaySize.x, (int)ImGui::GetIO().DisplaySize.y);
+		//	Rendering
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-	}
-
-	void ImGuiLayer::OnEvent(SDL_Event& event)
-	{
-
+	
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			SDL_GLContext backup_current = window->gl_context;
+			ImGui::UpdatePlatformWindows();
+			ImGui::RenderPlatformWindowsDefault();
+			SDL_GL_MakeCurrent(window->window,backup_current);
+		}
+	
 	}
 }

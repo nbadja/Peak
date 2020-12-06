@@ -1,18 +1,20 @@
 #include "peakpch.h"
 #include "Application.h"
-#include "Window/Window.h"
-#include "Platform/OpenGL/imgui_impl_sdl.h"
-#include "Platform/OpenGL/imgui_impl_opengl3.h"
-#include "Peak/ImGui/ImGuiLayer.h"
+#include "Renderer/Renderer.h"
+
 
 namespace Peak {
 
     Application* Application::s_Instance = nullptr;
 
-	Application::Application()
+	Application::Application(std::string title, int width, int height)
 	{
 		s_Instance = this;
+		Create_Window(title, width, height);
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
+
 
 	Application::~Application()
 	{
@@ -35,34 +37,48 @@ namespace Peak {
 		m_Window = new Window(title.c_str(), width, height);
 	}
 
+	void Application::HandleEvents()
+	{
+
+		for (Layer* layer : m_LayerStack)
+			layer->OnEvent(event);
+
+		while (SDL_PollEvent(&event)) {
+			ImGui_ImplSDL2_ProcessEvent(&event);
+			if (event.type == SDL_QUIT)
+				m_Running = false;
+			else if (event.type == SDL_WINDOWEVENT)
+			{
+				switch (event.window.event)
+				{
+				case SDL_WINDOWEVENT_RESIZED:
+					m_Window->OnWindowResize();
+					break;
+				}
+			}
+		}
+	}
+
 	void Application::Run()
 	{	
 
-		SDL_Event event;
 		while (m_Running)
 		{
-			while (SDL_PollEvent(&event)) {
-				ImGui_ImplSDL2_ProcessEvent(&event);
-				if (event.type == SDL_QUIT)
-					m_Running = false;
+			float time = (float) SDL_GetTicks() / 1000.0f;
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
+			HandleEvents();
 
 			for (Layer* layer : m_LayerStack)
-				layer->OnEvent(event);
-			}
+				layer->OnUpdate(timestep);
 
-		
-
-			Render();
-
+			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			Update(m_Window->window);
-
-
-
-
-			
 		}
 	}
 }
