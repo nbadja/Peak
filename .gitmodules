@@ -13,3 +13,6 @@
 [submodule "Peak/vendor/glm"]
 	path = Peak/vendor/glm
 	url = https://github.com/g-truc/glm
+[submodule "Peak/vendor/zep"]
+	path = Peak/vendor/zep
+	url = https://github.com/Rezonality/zep/

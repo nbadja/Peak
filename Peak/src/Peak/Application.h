@@ -31,6 +31,9 @@ namespace Peak {
 			inline ImGuiLayer* GetImGuiLayer() {
 				return m_ImGuiLayer;
 			}
+			inline SDL_Event& GetEvent(){
+				return event;
+			}
 			void Create_Window(std::string title, int width, int height);
 			void HandleEvents();
 	private:

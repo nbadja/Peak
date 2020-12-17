@@ -15,6 +15,7 @@ IncludeDir["SDL2"] = "Peak/vendor/SDL2/include"
 IncludeDir["Glad"] = "Peak/vendor/Glad/include"
 IncludeDir["ImGui"] = "Peak/vendor/imgui"
 IncludeDir["glm"] = "Peak/vendor/glm"
+IncludeDir["zep"] = "Peak/vendor/zep/include"
 
 group "Dependencies"
 include "Peak/vendor/SDL2/SDL2.lua"
@@ -39,7 +40,8 @@ project "Peak"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/zep/src/**.cpp"
 	}
 
 	includedirs
@@ -50,7 +52,8 @@ project "Peak"
 		"GL",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.zep}"
 	}
 
 	links

@@ -1,97 +1,273 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Peak">
-      <UniqueIdentifier>{66A88A7C-52DF-8B0D-FBCB-7110E7E1070F}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Peak\ImGui">
-      <UniqueIdentifier>{1052A592-FC09-E7DF-6511-C03B51E881D0}</UniqueIdentifier>
+    <Filter Include="src\Peak">
+      <UniqueIdentifier>{DDC723CF-C994-7EDA-F2AD-6C82DED9B368}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Peak\Window">
-      <UniqueIdentifier>{8D86C407-F93B-3DFD-8230-37D4EEE43301}</UniqueIdentifier>
+    <Filter Include="src\Peak\Core">
+      <UniqueIdentifier>{555E95F6-C11E-112D-8A59-5AAAF6D85509}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform">
-      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    <Filter Include="src\Peak\ImGui">
+      <UniqueIdentifier>{C7EEABC9-B3BC-9FCF-9C50-10F688BD7B34}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\OpenGL">
-      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    <Filter Include="src\Peak\Renderer">
+      <UniqueIdentifier>{2334FEB0-8F4A-FC46-D8C1-87684417CDCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Peak\Window">
+      <UniqueIdentifier>{24BA9E1F-9045-0CE4-9956-8FD8056168E4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\zep">
+      <UniqueIdentifier>{71EFC5A8-5DA7-07F6-C6AE-E051B285A2E6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\zep\src">
+      <UniqueIdentifier>{08FE3D70-F4CB-3176-DD5F-A29CC9CC0DDB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\zep\src\mcommon">
+      <UniqueIdentifier>{6D73E68E-596D-0FE1-42DA-A5F12E73754D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\zep\src\mcommon\animation">
+      <UniqueIdentifier>{BC38AE51-A889-9993-D1ED-8755BD9D2CFD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\zep\src\mcommon\file">
+      <UniqueIdentifier>{DCDAB411-48E8-E2F7-D1CE-DEE23DDBAEAE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\zep\src\mcommon\string">
+      <UniqueIdentifier>{73897471-DFA1-5B9B-A84E-EB341426F034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\zep\src\tests">
+      <UniqueIdentifier>{EA4E2510-D6DD-AED9-7FFC-C2D46B6ABF7F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Peak.h" />
+    <ClInclude Include="src\Peak.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\Peak\Application.h">
-      <Filter>Peak</Filter>
+      <Filter>src\Peak</Filter>
     </ClInclude>
     <ClInclude Include="src\Peak\Core.h">
-      <Filter>Peak</Filter>
+      <Filter>src\Peak</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Peak\Core\Timestep.h">
+      <Filter>src\Peak\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Peak\EntryPoint.h">
-      <Filter>Peak</Filter>
+      <Filter>src\Peak</Filter>
     </ClInclude>
     <ClInclude Include="src\Peak\ImGui\ImGuiLayer.h">
-      <Filter>Peak\ImGui</Filter>
+      <Filter>src\Peak\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Peak\Input.h">
+      <Filter>src\Peak</Filter>
     </ClInclude>
     <ClInclude Include="src\Peak\Layer.h">
-      <Filter>Peak</Filter>
+      <Filter>src\Peak</Filter>
     </ClInclude>
     <ClInclude Include="src\Peak\LayerStack.h">
-      <Filter>Peak</Filter>
+      <Filter>src\Peak</Filter>
     </ClInclude>
     <ClInclude Include="src\Peak\Log.h">
-      <Filter>Peak</Filter>
+      <Filter>src\Peak</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Peak\Renderer\Buffer.h">
+      <Filter>src\Peak\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Peak\Renderer\Camera.h">
+      <Filter>src\Peak\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Peak\Renderer\Renderer.h">
+      <Filter>src\Peak\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Peak\Renderer\Shader.h">
+      <Filter>src\Peak\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Peak\Renderer\VertexArray.h">
+      <Filter>src\Peak\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Peak\Window\Window.h">
-      <Filter>Peak\Window</Filter>
+      <Filter>src\Peak\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3.h">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\imgui_impl_sdl.h">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\peakpch.h" />
-    <ClInclude Include="src\Peak\Renderer\Shader.h" />
-    <ClInclude Include="src\Peak\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Peak\Renderer\Renderer.h" />
-    <ClInclude Include="src\Peak\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Peak\Renderer\Camera.h" />
-    <ClInclude Include="src\Peak\Input.h" />
-    <ClInclude Include="src\Peak\Core\Timestep.h" />
+    <ClInclude Include="src\peakpch.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Peak\Application.cpp">
-      <Filter>Peak</Filter>
+      <Filter>src\Peak</Filter>
     </ClCompile>
     <ClCompile Include="src\Peak\ImGui\ImGuiLayer.cpp">
-      <Filter>Peak\ImGui</Filter>
+      <Filter>src\Peak\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Peak\Layer.cpp">
-      <Filter>Peak</Filter>
+      <Filter>src\Peak</Filter>
     </ClCompile>
     <ClCompile Include="src\Peak\LayerStack.cpp">
-      <Filter>Peak</Filter>
+      <Filter>src\Peak</Filter>
     </ClCompile>
     <ClCompile Include="src\Peak\Log.cpp">
-      <Filter>Peak</Filter>
+      <Filter>src\Peak</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Peak\Renderer\Buffer.cpp">
+      <Filter>src\Peak\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Peak\Renderer\Camera.cpp">
+      <Filter>src\Peak\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Peak\Renderer\Renderer.cpp">
+      <Filter>src\Peak\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Peak\Renderer\Shader.cpp">
+      <Filter>src\Peak\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Peak\Renderer\VertexArray.cpp">
+      <Filter>src\Peak\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Peak\Window\Window.cpp">
-      <Filter>Peak\Window</Filter>
+      <Filter>src\Peak\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\imgui_impl_opengl3.cpp">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\imgui_impl_sdl.cpp">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\peakpch.cpp" />
-    <ClCompile Include="src\Peak\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Peak\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Peak\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Peak\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Peak\Renderer\Camera.cpp" />
+    <ClCompile Include="src\peakpch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\buffer.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\commands.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\display.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\editor.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\filesystem.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\glyph_iterator.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\indexer.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\keymap.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\line_widgets.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\mcommon\animation\timer.cpp">
+      <Filter>vendor\zep\src\mcommon\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\mcommon\file\path.cpp">
+      <Filter>vendor\zep\src\mcommon\file</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\mcommon\string\murmur_hash.cpp">
+      <Filter>vendor\zep\src\mcommon\string</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\mcommon\string\stringutils.cpp">
+      <Filter>vendor\zep\src\mcommon\string</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\mode.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\mode_search.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\mode_standard.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\mode_tree.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\mode_vim.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\range_markers.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\regress.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\scroller.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\splits.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\syntax.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\syntax_markdown.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\syntax_providers.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\syntax_rainbow_brackets.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\syntax_tree.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\tab_window.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\tests\buffer.test.cpp">
+      <Filter>vendor\zep\src\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\tests\gap_buffer.test.cpp">
+      <Filter>vendor\zep\src\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\tests\mode_standard.test.cpp">
+      <Filter>vendor\zep\src\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\tests\mode_vim.test.cpp">
+      <Filter>vendor\zep\src\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\tests\syntax.test.cpp">
+      <Filter>vendor\zep\src\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\theme.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\zep\src\window.cpp">
+      <Filter>vendor\zep\src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

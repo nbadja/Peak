@@ -4,6 +4,7 @@
 #include "Platform/OpenGL/imgui_impl_opengl3.h"
 #include "Peak/Application.h"
 
+
 namespace Peak
 {
 	ImGuiLayer::ImGuiLayer() :Layer("ImGuiLayer")
@@ -81,9 +82,10 @@ namespace Peak
 		ImGui::NewFrame();
 	}
 
+	
 	void ImGuiLayer::OnImGuiRender()
 	{
-
+	
 	}
 
 	void ImGuiLayer::End()
